@@ -14,11 +14,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Badge } from "@/components//ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { ExternalLink, Mail, Star } from "lucide-react";
+import { ExternalLink, Globe, Mail, Star } from "lucide-react";
 import paths from "@/paths/routes";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 export interface UserCardProps {
   user: UserProps;
@@ -34,6 +35,8 @@ export default function UserCard({
     email,
     login,
     html_url,
+    location,
+    company,
     followers,
     following,
     avatar_url,
@@ -75,16 +78,19 @@ export default function UserCard({
           )}
         </div>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap space-x-4">
+      <Separator />
+      <CardContent className="pt-4">
+        <div className="flex flex-wrap justify-end gap-4 items-center h-5">
           <span>Seguidores: {followers}</span>
-
+          <Separator orientation="vertical" decorative />
           <span>Siguiendo: {following}</span>
-          <span>Repositorios: {public_repos}</span>
         </div>
+        <p className="mt-4 flex items-center gap-2">
+          <Globe className="size-4 inline" /> {location}{" "}
+        </p>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
-            <AccordionTrigger>Repositorios</AccordionTrigger>
+            <AccordionTrigger>Repositorios: {public_repos}</AccordionTrigger>
             <AccordionContent className="flex flex-col space-y-4">
               {repos?.map((props) => (
                 <RepoBox {...props} key={props.id} />
@@ -104,14 +110,14 @@ export default function UserCard({
           Ir al perfil
         </a>
         {blog && (
-          <a
+          <Link
             className={buttonVariants({ variant: "link" })}
             href={blog}
             target="_blank"
             rel="noopener noreferrer"
           >
             Blog
-          </a>
+          </Link>
         )}
         {twitter_username && (
           <a

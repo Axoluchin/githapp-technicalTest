@@ -64,7 +64,7 @@ export default async function RepoCard({
               </AvatarFallback>
             </Avatar>
           </HoverCardTrigger>
-          <HoverCardContent>
+          <HoverCardContent className="w-auto flex flex-col justify-start">
             <Link
               className={buttonVariants({ variant: "link" })}
               href={`${paths.user}?search=${owner.login}`}

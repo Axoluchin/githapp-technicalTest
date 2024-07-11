@@ -15,12 +15,14 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form";
+import { useState } from "react";
 
 export default function Search() {
   const { push } = useRouter();
+  const [loadingButton, setLoadingButton] = useState(false);
 
   const formSchema = z.object({
-    user: z
+    repos: z
       .string()
       .min(1, "Escribe al menos 1 carácter")
       .max(30, "Limite de caracteres excedido"),
@@ -30,13 +32,15 @@ export default function Search() {
     methods,
     handleSubmit,
     formState: { isValid },
-  } = useZForm({ schema: formSchema, defaultValues: { user: "" } });
+  } = useZForm({ schema: formSchema, defaultValues: { repos: "" } });
 
-  const onSubmit = ({ user }: z.infer<typeof formSchema>) => {
+  const onSubmit = async ({ repos }: z.infer<typeof formSchema>) => {
+    setLoadingButton;
+    true;
     const urlParams = new URLSearchParams({
-      search: user,
+      search: repos,
     });
-    push(`${paths.user}?${urlParams.toString()}`);
+    push(`${paths.repos}?${urlParams.toString()}`);
   };
 
   return (
@@ -47,22 +51,25 @@ export default function Search() {
       >
         <FormField
           control={methods.control}
-          name="user"
+          name="repos"
           render={({ field, fieldState: { error } }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="user4321" {...field} />
+                <Input placeholder="my-favorite-repo" {...field} />
               </FormControl>
               <FormDescription>
-                {error ? error.message : "Encuentra tus usuarios favoritos"}
+                {error ? error.message : "Encuentra tus repositorios favoritos"}
               </FormDescription>
             </FormItem>
           )}
         />
-
         <div className="flex space-x-4 w-full">
-          <Button className="w-full" disabled={!isValid} type="submit">
-            Buscar Usuario
+          <Button
+            className="w-full"
+            disabled={!isValid || loadingButton}
+            type="submit"
+          >
+            {loadingButton ? "Cargando" : "Buscar Repositorio"}
           </Button>
         </div>
       </form>

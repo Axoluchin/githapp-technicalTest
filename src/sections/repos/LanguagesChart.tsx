@@ -24,11 +24,13 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
 
   const chartConfig = {} satisfies ChartConfig;
 
+  if (values.length < 1) return null;
+
   return (
     <div className="grid grid-cols-2 items-center">
       <ChartContainer
         config={chartConfig}
-        className="mx-auto aspect-square m-h-[250px]"
+        className="mx-auto aspect-square m-h-[250px] min-w-[200px] w-full"
       >
         <PieChart>
           <ChartTooltip
