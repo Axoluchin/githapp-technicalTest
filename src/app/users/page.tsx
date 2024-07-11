@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { searchUser } from "@/api/users";
+import { getReposByUser, searchUser } from "@/api/users";
 import UserCard from "@/components/cards/UserCard";
 import { buttonVariants } from "@/components/ui/button";
 import paths from "@/paths/routes";
 import Search from "@/sections/users/Search";
 import { Alert, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle, Terminal } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 interface PageUsersProps {
   searchParams: {
@@ -19,6 +19,10 @@ export default async function PageUsers({
   const { data, status } = search
     ? await searchUser(search)
     : { data: null, status: null };
+
+  const repos = data?.repos_url
+    ? (await getReposByUser(data.repos_url)).data
+    : null;
 
   if (!data)
     return (
@@ -36,9 +40,8 @@ export default async function PageUsers({
 
   return (
     <div className="my-4">
-      <h1 className="text-center text-5xl font-semibold">{search}</h1>
       <section className="max-w-lg m-auto my-8 flex flex-col justify-center space-y-8">
-        <UserCard user={data} />
+        <UserCard user={data} repos={repos} />
         <Link href={paths.user} className={buttonVariants()}>
           Buscar otro usuario
         </Link>

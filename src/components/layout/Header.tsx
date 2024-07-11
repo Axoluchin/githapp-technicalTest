@@ -3,7 +3,7 @@ import { buttonVariants } from "../ui/button";
 
 export default function Header() {
   return (
-    <header className="py-2 px-4 border-b sticky top-0 z-10 flex items-center">
+    <header className="bg-background py-2 px-4 border-b sticky top-0 z-10 flex items-center">
       <a href={paths.root}>
         <h2 className="text-xl font-semibold">GitHapp</h2>
       </a>
