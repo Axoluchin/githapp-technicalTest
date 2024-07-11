@@ -1,6 +1,6 @@
 import { SearchUserProps } from "./interfaces";
-import { ApiInstance } from "./config";
-import { AxiosError } from "axios";
+import { API_HEADERS, ApiInstance } from "./config";
+import axios, { AxiosError } from "axios";
 
 export const searchRepos = async (name: string) => {
   try {
@@ -12,5 +12,16 @@ export const searchRepos = async (name: string) => {
   } catch (error) {
     const axiosError = error as AxiosError;
     return { data: undefined, status: axiosError.status };
+  }
+};
+
+export const getLanguagesByRepo = async (url: string) => {
+  try {
+    const { data } = await axios.get<Record<string, number>>(url, {
+      headers: API_HEADERS,
+    });
+    return data;
+  } catch (error) {
+    return {};
   }
 };

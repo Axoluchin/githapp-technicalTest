@@ -1,4 +1,5 @@
 import { RepoProps } from "@/api/interfaces";
+import { getLanguagesByRepo } from "@/api/repos";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge, BadgeProps } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -19,22 +20,27 @@ import {
 import paths from "@/paths/routes";
 import { Book, ExternalLink, Eye, Star, User } from "lucide-react";
 import Link from "next/link";
+import LanguagesChart from "./LanguagesChart";
 
 export interface RepoCardProps extends RepoProps {}
 
-export default function RepoCard({
+export default async function RepoCard({
   name,
   fork,
   owner,
   topics,
   license,
   archived,
+  html_url,
   language,
   homepage,
   description,
   watchers_count,
+  languages_url,
   stargazers_count,
 }: RepoCardProps) {
+  const languages = await getLanguagesByRepo(languages_url);
+
   return (
     <Card className="flex flex-col">
       <CardHeader className="flex-row items-start space-x-4">
@@ -102,8 +108,9 @@ export default function RepoCard({
         </div>
       </CardHeader>
       <CardContent className="flex-1">
+        <LanguagesChart data={languages} />
         {!!topics?.length && (
-          <>
+          <div>
             <h4 className="font-semibold mb-1">Tags:</h4>
             <div className="flex flex-wrap gap-2">
               {topics.map((topic) => (
@@ -112,7 +119,7 @@ export default function RepoCard({
                 </Badge>
               ))}
             </div>
-          </>
+          </div>
         )}
       </CardContent>
       <CardFooter className="flex justify-end">
@@ -128,7 +135,7 @@ export default function RepoCard({
         )}
         <Link
           className={buttonVariants({ variant: "link" })}
-          href={owner.html_url}
+          href={html_url}
           target="_blank"
           rel="noopener noreferrer"
         >
