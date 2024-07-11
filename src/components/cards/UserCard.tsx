@@ -37,13 +37,13 @@ export default function UserCard({
           <AvatarImage src={avatar_url} />
           <AvatarFallback>
             {name
-              .split(" ")
+              ?.split(" ")
               .map((n) => n.charAt(0))
               .join("")}
           </AvatarFallback>
         </Avatar>
         <div>
-          <CardTitle>{name}</CardTitle>
+          <CardTitle>{name || login}</CardTitle>
           <CardDescription>
             #{login}{" "}
             {email && (

@@ -3,6 +3,9 @@ import { searchUser } from "@/api/users";
 import UserCard from "@/components/cards/UserCard";
 import { buttonVariants } from "@/components/ui/button";
 import paths from "@/paths/routes";
+import Search from "@/sections/users/Search";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle, Terminal } from "lucide-react";
 
 interface PageUsersProps {
   searchParams: {
@@ -17,25 +20,23 @@ export default async function PageUsers({
     ? await searchUser(search)
     : { data: null, status: null };
 
-  if (data === null)
+  if (!data)
     return (
-      <div>
-        <h2>GitHapp</h2>
-        <span>Busca un usuario</span>
-      </div>
-    );
-
-  if (status !== 200 || !data)
-    return (
-      <div>
-        <h2>Usuario no encontrado</h2>
-        <span>status: {status}</span>
-      </div>
+      <section className="flex flex-col justify-center items-center h-96 gap-4 m-auto">
+        <h1 className="text-5xl font-bold">GitHapp</h1>
+        <Search />
+        {status !== null && (
+          <Alert variant={"destructive"} className="w-96">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Usuario no encontrado</AlertTitle>
+          </Alert>
+        )}
+      </section>
     );
 
   return (
     <div className="my-4">
-      <h1 className="text-center text-5xl font-semibold">Usuario {search}</h1>
+      <h1 className="text-center text-5xl font-semibold">{search}</h1>
       <section className="max-w-lg m-auto my-8 flex flex-col justify-center space-y-8">
         <UserCard user={data} />
         <Link href={paths.user} className={buttonVariants()}>

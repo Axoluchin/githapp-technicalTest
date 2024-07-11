@@ -17,7 +17,7 @@ export interface UserProps {
   received_events_url: string;
   type: string;
   site_admin: boolean;
-  name: string;
+  name?: string;
   company: any;
   blog: string;
   location?: string;
