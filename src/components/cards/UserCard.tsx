@@ -139,11 +139,14 @@ const RepoBox = ({
   fork,
   description,
   language,
+  html_url,
   stargazers_count,
 }: RepoProps) => (
   <Link
-    href={`${paths.repos}?search=${name}`}
-    className="p-4 border rounded-lg hover:bg-slate-100"
+    href={html_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-4 border rounded-lg hover:bg-border"
   >
     <div className="flex justify-between items-center ">
       <h6 className="font-semibold">{name}</h6>
@@ -158,6 +161,6 @@ const RepoBox = ({
         {fork && <Badge variant="secondary">Fork</Badge>}
       </div>
     </div>
-    {description && <p className="text-slate-500 mt-4">{description}</p>}
+    {description && <p className="text-muted-foreground mt-4">{description}</p>}
   </Link>
 );

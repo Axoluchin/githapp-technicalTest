@@ -1,5 +1,6 @@
 import paths from "@/paths/routes";
 import { buttonVariants } from "../ui/button";
+import { ToggleTheme } from "./ToggleTheme";
 
 export default function Header() {
   return (
@@ -15,6 +16,7 @@ export default function Header() {
           Buscar Repositorios
         </a>
       </nav>
+      <ToggleTheme />
     </header>
   );
 }
