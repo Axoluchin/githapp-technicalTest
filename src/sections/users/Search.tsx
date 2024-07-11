@@ -43,7 +43,7 @@ export default function Search() {
     <Form {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 w-96"
+        className="flex flex-col gap-4 w-full px-4 sm:w-96"
       >
         <FormField
           control={methods.control}

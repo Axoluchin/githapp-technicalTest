@@ -44,7 +44,7 @@ export default function Search() {
 
   return (
     <Form {...methods}>
-      <form action="" className="flex flex-col gap-4 w-96">
+      <form action="" className="flex flex-col gap-4 md:w-96">
         <FormField
           control={methods.control}
           name="userepo"

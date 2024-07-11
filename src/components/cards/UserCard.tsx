@@ -47,7 +47,7 @@ export default function UserCard({
 }: UserCardProps) {
   return (
     <Card>
-      <CardHeader className="flex-row items-center space-x-4">
+      <CardHeader className="sm:flex-row items-center sm:space-x-4">
         <Avatar
           className={`size-20 mt-2 ${
             type === "Organization" && "rounded-none"
@@ -80,12 +80,18 @@ export default function UserCard({
       </CardHeader>
       <Separator />
       <CardContent className="pt-4">
-        <div className="flex flex-wrap justify-end gap-4 items-center h-5">
-          <span>Seguidores: {followers}</span>
+        <div className="flex flex-wrap justify-center sm:justify-end gap-4 items-center h-8">
+          <div className="flex flex-col items-center">
+            <Badge variant="outline">{followers}</Badge>
+            <span className="font-semibold">Seguidores</span>
+          </div>
           <Separator orientation="vertical" decorative />
-          <span>Siguiendo: {following}</span>
+          <div className="flex flex-col items-center">
+            <Badge variant="outline">{followers}</Badge>
+            <span className="font-semibold">Siguiendo</span>
+          </div>
         </div>
-        <p className="mt-4 flex items-center gap-2">
+        <p className="mt-6 flex items-center gap-2">
           <Globe className="size-4 inline" /> {location}{" "}
         </p>
         <Accordion type="single" collapsible>
@@ -99,7 +105,7 @@ export default function UserCard({
           </AccordionItem>
         </Accordion>
       </CardContent>
-      <CardFooter className="justify-end">
+      <CardFooter className="justify-between flex-wrap sm:justify-end">
         <a
           className={buttonVariants({ variant: "link" })}
           href={html_url}
@@ -107,7 +113,7 @@ export default function UserCard({
           rel="noopener noreferrer"
         >
           <ExternalLink className="mr-2 size-4" />
-          Ir al perfil
+          Github
         </a>
         {blog && (
           <Link
@@ -148,7 +154,7 @@ const RepoBox = ({
     rel="noopener noreferrer"
     className="p-4 border rounded-lg hover:bg-border"
   >
-    <div className="flex justify-between items-center ">
+    <div className="flex flex-wrap justify-between items-center gap-2 ">
       <h6 className="font-semibold">{name}</h6>
       <div className="flex space-x-4">
         {!!stargazers_count && (
