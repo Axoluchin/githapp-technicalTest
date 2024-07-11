@@ -107,12 +107,14 @@ export interface RepoProps {
   allow_forking: boolean;
   is_template: boolean;
   web_commit_signoff_required: boolean;
-  topics: any[];
+  topics?: string[];
   visibility: string;
   forks: number;
   open_issues: number;
   watchers: number;
   default_branch: string;
+  permissions?: Permissions;
+  score?: number;
 }
 
 export interface Owner {
@@ -132,7 +134,7 @@ export interface Owner {
   repos_url: string;
   events_url: string;
   received_events_url: string;
-  type: string;
+  type: "User" | "Organization";
   site_admin: boolean;
 }
 
@@ -142,4 +144,18 @@ export interface License {
   spdx_id: string;
   url?: string;
   node_id: string;
+}
+
+export interface Permissions {
+  admin: boolean;
+  maintain: boolean;
+  push: boolean;
+  triage: boolean;
+  pull: boolean;
+}
+
+export interface SearchUserProps {
+  total_count: number;
+  incomplete_results: boolean;
+  items: RepoProps[];
 }

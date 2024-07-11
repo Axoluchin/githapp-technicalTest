@@ -17,6 +17,8 @@ import {
 import { Badge } from "@/components//ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { ExternalLink, Mail, Star } from "lucide-react";
+import paths from "@/paths/routes";
+import Link from "next/link";
 
 export interface UserCardProps {
   user: UserProps;
@@ -25,8 +27,9 @@ export interface UserCardProps {
 
 export default function UserCard({
   user: {
-    name,
     bio,
+    name,
+    type,
     blog,
     email,
     login,
@@ -42,7 +45,11 @@ export default function UserCard({
   return (
     <Card>
       <CardHeader className="flex-row items-center space-x-4">
-        <Avatar className="size-20 ">
+        <Avatar
+          className={`size-20 mt-2 ${
+            type === "Organization" && "rounded-none"
+          }`}
+        >
           <AvatarImage src={avatar_url} alt={`${login} avatar`} />
           <AvatarFallback>
             {name
@@ -122,20 +129,15 @@ export default function UserCard({
 }
 
 const RepoBox = ({
-  id,
-  html_url,
   name,
   fork,
   description,
   language,
   stargazers_count,
 }: RepoProps) => (
-  <a
-    href={html_url}
-    target="_blank"
-    rel="noopener noreferrer"
+  <Link
+    href={`${paths.repos}?search=${name}`}
     className="p-4 border rounded-lg hover:bg-slate-100"
-    key={id}
   >
     <div className="flex justify-between items-center ">
       <h6 className="font-semibold">{name}</h6>
@@ -151,5 +153,5 @@ const RepoBox = ({
       </div>
     </div>
     {description && <p className="text-slate-500 mt-4">{description}</p>}
-  </a>
+  </Link>
 );

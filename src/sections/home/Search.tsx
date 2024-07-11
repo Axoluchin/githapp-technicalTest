@@ -29,7 +29,7 @@ export default function Search() {
   const {
     methods,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, isSubmitting },
   } = useZForm({ schema: formSchema, defaultValues: { userepo: "" } });
 
   const onSubmit = (
@@ -39,7 +39,6 @@ export default function Search() {
     const urlParams = new URLSearchParams({
       search: userepo,
     });
-    console.log("HOLA");
     push(`${path}?${urlParams.toString()}`);
   };
 
@@ -66,14 +65,14 @@ export default function Search() {
         <div className="flex space-x-4 w-full">
           <Button
             className="w-full"
-            disabled={!isValid}
+            disabled={!isValid || isSubmitting}
             onClick={handleSubmit((d) => onSubmit(d, paths.user))}
           >
             Buscar Usuario
           </Button>
           <Button
             className="w-full"
-            disabled={!isValid}
+            disabled={!isValid || isSubmitting}
             onClick={handleSubmit((d) => onSubmit(d, paths.repos))}
           >
             Buscar Repositorio
