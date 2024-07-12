@@ -34,14 +34,14 @@ export default async function PageRepos({ searchParams: { search } }: PageReposP
     )
 
   return (
-    <div className="my-4 flex flex-col space-y-4 px-8 overflow-hidden max-w-screen-2xl m-auto">
+    <div className="my-4 flex flex-col space-y-4 overflow-hidden max-w-screen-2xl m-auto">
       <h1 className="text-3xl md:text-5xl font-bold text-center">Resultados de {search}</h1>
       <div className="flex justify-center">
         <Link href={paths.repos} className={buttonVariants()}>
           Buscar otros repositorios
         </Link>
       </div>
-      <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-8">
+      <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-8 px-2">
         {data.items.map((repo) => (
           <RepoCard {...repo} key={repo.id} />
         ))}
