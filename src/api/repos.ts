@@ -1,6 +1,7 @@
+import axios, { AxiosError } from 'axios'
+
 import { SearchUserProps } from './interfaces'
 import { API_HEADERS, ApiInstance } from './config'
-import axios, { AxiosError } from 'axios'
 
 export const searchRepos = async (name: string) => {
   try {

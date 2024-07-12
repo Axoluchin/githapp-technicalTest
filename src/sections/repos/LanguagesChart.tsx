@@ -1,6 +1,6 @@
 'use client'
 
-import { Bar, BarChart, Label, Pie, PieChart, Sector } from 'recharts'
+import { Pie, PieChart } from 'recharts'
 
 import {
   ChartContainer,
@@ -8,7 +8,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
-import { Code } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 export interface LanguagesChartProps {

@@ -1,9 +1,6 @@
-import { RepoProps } from '@/api/interfaces'
-import { getLanguagesByRepo } from '@/api/repos'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge, BadgeProps } from '@/components/ui/badge'
-import { buttonVariants } from '@/components/ui/button'
-
+import Link from 'next/link'
+import paths from '@/paths/routes'
+// components
 import {
   Card,
   CardContent,
@@ -12,10 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { buttonVariants } from '@/components/ui/button'
+import { Badge, BadgeProps } from '@/components/ui/badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import paths from '@/paths/routes'
 import { Book, ExternalLink, Eye, Star, User } from 'lucide-react'
-import Link from 'next/link'
+// api
+import { RepoProps } from '@/api/interfaces'
+import { getLanguagesByRepo } from '@/api/repos'
+
 import LanguagesChart from './LanguagesChart'
 
 export interface RepoCardProps extends RepoProps {}

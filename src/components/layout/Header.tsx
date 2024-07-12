@@ -1,7 +1,19 @@
-import paths from '@/paths/routes'
-import { buttonVariants } from '../ui/button'
-import { ToggleTheme } from './ToggleTheme'
 import Link from 'next/link'
+import paths from '@/paths/routes'
+// components
+import { buttonVariants } from '@/components/ui/button'
+import { ToggleTheme } from './ToggleTheme'
+
+const pages = [
+  {
+    label: 'Usuarios',
+    href: paths.user,
+  },
+  {
+    label: 'Repositorios',
+    href: paths.repos,
+  },
+]
 
 export default function Header() {
   return (
@@ -10,12 +22,11 @@ export default function Header() {
         <h2 className="text-xl font-semibold">GitHapp</h2>
       </a>
       <nav className="flex-1 flex justify-center sm:space-x-8">
-        <Link href={paths.user} className={buttonVariants({ variant: 'link' })}>
-          Usuarios
-        </Link>
-        <Link href={paths.repos} className={buttonVariants({ variant: 'link' })}>
-          Repositorios
-        </Link>
+        {pages.map(({ href, label }) => (
+          <Link href={href} className={buttonVariants({ variant: 'link' })} key={label}>
+            {label}
+          </Link>
+        ))}
       </nav>
       <ToggleTheme />
     </header>

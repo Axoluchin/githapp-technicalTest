@@ -1,12 +1,13 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
+
+import type { Metadata } from 'next'
+import { Sora } from 'next/font/google'
 // components
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const sora = Sora({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'GitApp',
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-col min-h-[100vh]`}>
+      <body className={`${sora.className} flex flex-col min-h-[100vh]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

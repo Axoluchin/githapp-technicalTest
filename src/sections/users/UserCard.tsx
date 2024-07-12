@@ -1,4 +1,11 @@
-import { RepoProps, UserProps } from '@/api/interfaces'
+import Link from 'next/link'
+// components
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import {
   Card,
   CardContent,
@@ -7,19 +14,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
-import { buttonVariants } from '@/components/ui/button'
-import { ExternalLink, Globe, Mail, Star } from 'lucide-react'
-import paths from '@/paths/routes'
-import Link from 'next/link'
 import { Separator } from '@/components/ui/separator'
+import { buttonVariants } from '@/components/ui/button'
+import { RepoProps, UserProps } from '@/api/interfaces'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { ExternalLink, Globe, Mail, Star } from 'lucide-react'
 
 export interface UserCardProps {
   user: UserProps

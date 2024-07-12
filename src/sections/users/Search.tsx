@@ -1,13 +1,13 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-
+import paths from '@/paths/routes'
+// components
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import useZForm from '@/hooks/useZForm'
-
+// forms
 import { z } from 'zod'
-import paths from '@/paths/routes'
+import useZForm from '@/hooks/useZForm'
 import { Form, FormControl, FormDescription, FormField, FormItem } from '@/components/ui/form'
 
 export default function Search() {

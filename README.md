@@ -14,7 +14,6 @@
 <img alt="Vercel" src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
 <img alt="Eslint" src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white">
 <img alt="Prettier" src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E">
-
 </p>
 
 ## Pre requisitos
@@ -26,7 +25,7 @@
 Clona el repositorio a tu local
 
 ```bash
-git clone https://github.com/Axoluchin/next-RCCM.git
+git clone https://github.com/Axoluchin/githapp-technicalTest
 ```
 
 Accede al directorio del proyecto e instala las dependencias
@@ -38,7 +37,7 @@ npm i
 Agrega tu [token de Github](https://github.com/settings/tokens) en `.env.local`
 
 ```
-GITHUB_API=<YOUR_TOKEN>
+GITHUB_API_KEY=<YOUR_TOKEN>
 ```
 
 Ahora ya puedes correr el proyecto en tu local

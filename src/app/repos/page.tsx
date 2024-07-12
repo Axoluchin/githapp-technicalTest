@@ -1,11 +1,14 @@
-import { searchRepos } from '@/api/repos'
-import { Alert, AlertTitle } from '@/components/ui/alert'
-import { buttonVariants } from '@/components/ui/button'
-import paths from '@/paths/routes'
-import RepoCard from '@/sections/repos/RepoCard'
-import Search from '@/sections/repos/Search'
-import { AlertCircle } from 'lucide-react'
 import Link from 'next/link'
+import paths from '@/paths/routes'
+// components
+import { AlertCircle } from 'lucide-react'
+import { buttonVariants } from '@/components/ui/button'
+import { Alert, AlertTitle } from '@/components/ui/alert'
+// api
+import { searchRepos } from '@/api/repos'
+
+import Search from '@/sections/repos/Search'
+import RepoCard from '@/sections/repos/RepoCard'
 
 interface PageReposProps {
   searchParams: {

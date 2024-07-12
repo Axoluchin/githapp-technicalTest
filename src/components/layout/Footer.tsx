@@ -9,7 +9,10 @@ export default function Footer() {
         GitHapp
       </Link>
 
-      <Link href={paths.root} className="text-xl font-semibold">
+      <Link
+        href="https://github.com/Axoluchin/githapp-technicalTest"
+        className="text-xl font-semibold"
+      >
         Github Repo <ExternalLink className="ml-2 size-4 inline-block" />
       </Link>
     </footer>

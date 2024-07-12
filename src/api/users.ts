@@ -1,6 +1,7 @@
-import { RepoProps, UserProps } from './interfaces'
-import { ApiInstance } from './config'
 import axios, { AxiosError } from 'axios'
+
+import { ApiInstance } from './config'
+import { RepoProps, UserProps } from './interfaces'
 
 export const searchUser = async (userName: string) => {
   try {

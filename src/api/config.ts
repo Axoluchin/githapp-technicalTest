@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const GITHUB_URL = 'https://api.github.com/'
 
-export const API_KEY = process.env.GITHUB_API || '<API_KEY>'
+export const API_KEY = process.env.GITHUB_API_KEY || '<API_KEY>'
 
 export const API_HEADERS = {
   'X-GitHub-Api-Version': '2022-11-28',

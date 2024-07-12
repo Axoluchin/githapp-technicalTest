@@ -1,19 +1,17 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-
+import paths from '@/paths/routes'
+// forms
+import { z } from 'zod'
+import useZForm from '@/hooks/useZForm'
+import { Form, FormControl, FormDescription, FormField, FormItem } from '@/components/ui/form'
+// components
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import useZForm from '@/hooks/useZForm'
-
-import { z } from 'zod'
-import paths from '@/paths/routes'
-import { Form, FormControl, FormDescription, FormField, FormItem } from '@/components/ui/form'
-import { useState } from 'react'
 
 export default function Search() {
   const { push } = useRouter()
-  const [loadingButton, setLoadingButton] = useState(false)
 
   const formSchema = z.object({
     repos: z
@@ -29,7 +27,6 @@ export default function Search() {
   } = useZForm({ schema: formSchema, defaultValues: { repos: '' } })
 
   const onSubmit = async ({ repos }: z.infer<typeof formSchema>) => {
-    setLoadingButton
     true
     const urlParams = new URLSearchParams({
       search: repos,
@@ -55,8 +52,8 @@ export default function Search() {
           )}
         />
         <div className="flex space-x-4 w-full">
-          <Button className="w-full" disabled={!isValid || loadingButton} type="submit">
-            {loadingButton ? 'Cargando' : 'Buscar Repositorio'}
+          <Button className="w-full" disabled={!isValid} type="submit">
+            Buscar Repositorio
           </Button>
         </div>
       </form>

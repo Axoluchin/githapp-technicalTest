@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { DefaultValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { DefaultValues, useForm } from 'react-hook-form'
 
 export interface useZFormProps<T> {
   schema: z.ZodType<T>
