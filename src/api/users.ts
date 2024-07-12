@@ -16,7 +16,7 @@ export const searchUser = async (userName: string) => {
 export const getReposByUser = async (repoUrl: string) => {
   try {
     const { data, status } = await axios.get<RepoProps[]>(repoUrl)
-    return { data, status: status }
+    return { data, status }
   } catch (error) {
     const axiosError = error as AxiosError
     return { data: undefined, status: axiosError.status }

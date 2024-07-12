@@ -40,7 +40,7 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
             innerRadius={60}
             paddingAngle={values.length > 1 ? 5 : 0}
             strokeWidth={5}
-          ></Pie>
+          />
         </PieChart>
       </ChartContainer>
       <div className="flex flex-wrap gap-2 p-2">

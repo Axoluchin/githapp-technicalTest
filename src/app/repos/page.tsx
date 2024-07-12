@@ -25,7 +25,7 @@ export default async function PageRepos({ searchParams: { search } }: PageReposP
         <h1 className="text-5xl font-bold">GitHapp</h1>
         <Search />
         {status !== null && (
-          <Alert variant={'destructive'} className="sm:w-96">
+          <Alert variant="destructive" className="sm:w-96">
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Repositorios no encontrados</AlertTitle>
           </Alert>

@@ -27,7 +27,6 @@ export default function Search() {
   } = useZForm({ schema: formSchema, defaultValues: { repos: '' } })
 
   const onSubmit = async ({ repos }: z.infer<typeof formSchema>) => {
-    true
     const urlParams = new URLSearchParams({
       search: repos,
     })

@@ -100,7 +100,7 @@ export default async function RepoCard({
             <h4 className="font-semibold mb-1">Tags:</h4>
             <div className="flex flex-wrap gap-2">
               {topics.map((topic) => (
-                <Badge variant={'secondary'} key={topic}>
+                <Badge variant="secondary" key={topic}>
                   {topic}
                 </Badge>
               ))}

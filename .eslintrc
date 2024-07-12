@@ -5,7 +5,7 @@
     "es2021": true
   },
   "plugins": ["@typescript-eslint", "prettier"],
-  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier"],
+  "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "prettier", "next/core-web-vitals"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
