@@ -1,4 +1,4 @@
-import { RepoProps, UserProps } from "@/api/interfaces";
+import { RepoProps, UserProps } from '@/api/interfaces'
 import {
   Card,
   CardContent,
@@ -6,24 +6,24 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from '@/components/ui/card'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { ExternalLink, Globe, Mail, Star } from "lucide-react";
-import paths from "@/paths/routes";
-import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/accordion'
+import { Badge } from '@/components/ui/badge'
+import { buttonVariants } from '@/components/ui/button'
+import { ExternalLink, Globe, Mail, Star } from 'lucide-react'
+import paths from '@/paths/routes'
+import Link from 'next/link'
+import { Separator } from '@/components/ui/separator'
 
 export interface UserCardProps {
-  user: UserProps;
-  repos?: RepoProps[] | null;
+  user: UserProps
+  repos?: RepoProps[] | null
 }
 
 export default function UserCard({
@@ -48,36 +48,26 @@ export default function UserCard({
   return (
     <Card>
       <CardHeader className="sm:flex-row items-center sm:space-x-4">
-        <Avatar
-          className={`size-20 mt-2 ${
-            type === "Organization" && "rounded-none"
-          }`}
-        >
+        <Avatar className={`size-20 mt-2 ${type === 'Organization' && 'rounded-none'}`}>
           <AvatarImage src={avatar_url} alt={`${login} avatar`} />
           <AvatarFallback>
             {name
-              ?.split(" ")
+              ?.split(' ')
               .map((n) => n.charAt(0))
-              .join("")}
+              .join('')}
           </AvatarFallback>
         </Avatar>
         <div>
-          <CardTitle className="text-center sm:text-start">
-            {name || login}
-          </CardTitle>
+          <CardTitle className="text-center sm:text-start">{name || login}</CardTitle>
           <CardDescription>
-            #{login}{" "}
+            #{login}{' '}
             {email && (
               <a href={`mailto:${email}`} className="hover:underline">
                 <Mail className="inline size-4" /> {email}
               </a>
             )}
           </CardDescription>
-          {bio && (
-            <CardDescription className="text-pretty mt-2">
-              {bio}
-            </CardDescription>
-          )}
+          {bio && <CardDescription className="text-pretty mt-2">{bio}</CardDescription>}
         </div>
       </CardHeader>
       <Separator />
@@ -94,7 +84,7 @@ export default function UserCard({
           </div>
         </div>
         <p className="mt-6 flex items-center gap-2">
-          <Globe className="size-4 inline" /> {location}{" "}
+          <Globe className="size-4 inline" /> {location}{' '}
         </p>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
@@ -109,7 +99,7 @@ export default function UserCard({
       </CardContent>
       <CardFooter className="justify-between flex-wrap sm:justify-end">
         <a
-          className={buttonVariants({ variant: "link" })}
+          className={buttonVariants({ variant: 'link' })}
           href={html_url}
           target="_blank"
           rel="noopener noreferrer"
@@ -119,7 +109,7 @@ export default function UserCard({
         </a>
         {blog && (
           <Link
-            className={buttonVariants({ variant: "link" })}
+            className={buttonVariants({ variant: 'link' })}
             href={blog}
             target="_blank"
             rel="noopener noreferrer"
@@ -129,7 +119,7 @@ export default function UserCard({
         )}
         {twitter_username && (
           <a
-            className={buttonVariants({ variant: "link" })}
+            className={buttonVariants({ variant: 'link' })}
             href={`https://www.x.com/${twitter_username}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -139,17 +129,10 @@ export default function UserCard({
         )}
       </CardFooter>
     </Card>
-  );
+  )
 }
 
-const RepoBox = ({
-  name,
-  fork,
-  description,
-  language,
-  html_url,
-  stargazers_count,
-}: RepoProps) => (
+const RepoBox = ({ name, fork, description, language, html_url, stargazers_count }: RepoProps) => (
   <Link
     href={html_url}
     target="_blank"
@@ -161,7 +144,7 @@ const RepoBox = ({
       <div className="flex space-x-4">
         {!!stargazers_count && (
           <Badge variant="outline">
-            {" "}
+            {' '}
             <Star className="size-3 mr-2" /> {stargazers_count}
           </Badge>
         )}
@@ -171,4 +154,4 @@ const RepoBox = ({
     </div>
     {description && <p className="text-muted-foreground mt-4">{description}</p>}
   </Link>
-);
+)

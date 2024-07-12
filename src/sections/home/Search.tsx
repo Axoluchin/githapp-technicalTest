@@ -1,46 +1,37 @@
-"use client";
+'use client'
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import useZForm from "@/hooks/useZForm";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import useZForm from '@/hooks/useZForm'
 
-import { z } from "zod";
-import paths from "@/paths/routes";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-} from "@/components/ui/form";
+import { z } from 'zod'
+import paths from '@/paths/routes'
+import { Form, FormControl, FormDescription, FormField, FormItem } from '@/components/ui/form'
 
 export default function Search() {
-  const { push } = useRouter();
+  const { push } = useRouter()
 
   const formSchema = z.object({
     userepo: z
       .string()
-      .min(1, "Escribe al menos 1 carácter")
-      .max(30, "Limite de caracteres excedido"),
-  });
+      .min(1, 'Escribe al menos 1 carácter')
+      .max(30, 'Limite de caracteres excedido'),
+  })
 
   const {
     methods,
     handleSubmit,
     formState: { isValid, isSubmitting },
-  } = useZForm({ schema: formSchema, defaultValues: { userepo: "" } });
+  } = useZForm({ schema: formSchema, defaultValues: { userepo: '' } })
 
-  const onSubmit = (
-    { userepo }: z.infer<typeof formSchema>,
-    path = paths.user
-  ) => {
+  const onSubmit = ({ userepo }: z.infer<typeof formSchema>, path = paths.user) => {
     const urlParams = new URLSearchParams({
       search: userepo,
-    });
-    push(`${path}?${urlParams.toString()}`);
-  };
+    })
+    push(`${path}?${urlParams.toString()}`)
+  }
 
   return (
     <Form {...methods}>
@@ -54,9 +45,7 @@ export default function Search() {
                 <Input placeholder="user4321 / my-favorite-repo" {...field} />
               </FormControl>
               <FormDescription>
-                {error
-                  ? error.message
-                  : "Encuentra tus usuarios / repositorios favoritos"}
+                {error ? error.message : 'Encuentra tus usuarios / repositorios favoritos'}
               </FormDescription>
             </FormItem>
           )}
@@ -80,5 +69,5 @@ export default function Search() {
         </div>
       </form>
     </Form>
-  );
+  )
 }

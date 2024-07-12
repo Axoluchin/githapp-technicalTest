@@ -1,4 +1,4 @@
-import Search from "@/sections/home/Search";
+import Search from '@/sections/home/Search'
 
 export default function Home() {
   return (
@@ -6,5 +6,5 @@ export default function Home() {
       <h1 className="text-5xl font-bold">GitHapp</h1>
       <Search />
     </section>
-  );
+  )
 }

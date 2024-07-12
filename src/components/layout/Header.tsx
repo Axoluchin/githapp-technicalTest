@@ -1,7 +1,7 @@
-import paths from "@/paths/routes";
-import { buttonVariants } from "../ui/button";
-import { ToggleTheme } from "./ToggleTheme";
-import Link from "next/link";
+import paths from '@/paths/routes'
+import { buttonVariants } from '../ui/button'
+import { ToggleTheme } from './ToggleTheme'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -10,17 +10,14 @@ export default function Header() {
         <h2 className="text-xl font-semibold">GitHapp</h2>
       </a>
       <nav className="flex-1 flex justify-center sm:space-x-8">
-        <Link href={paths.user} className={buttonVariants({ variant: "link" })}>
+        <Link href={paths.user} className={buttonVariants({ variant: 'link' })}>
           <span className="hidden sm:inline">Buscar</span> Usuarios
         </Link>
-        <Link
-          href={paths.repos}
-          className={buttonVariants({ variant: "link" })}
-        >
+        <Link href={paths.repos} className={buttonVariants({ variant: 'link' })}>
           Repositorios
         </Link>
       </nav>
       <ToggleTheme />
     </header>
-  );
+  )
 }

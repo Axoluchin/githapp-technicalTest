@@ -1,7 +1,7 @@
 const paths = {
-  root: "/",
-  user: "/users",
-  repos: "/repos",
-};
+  root: '/',
+  user: '/users',
+  repos: '/repos',
+}
 
-export default paths;
+export default paths

@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { Bar, BarChart, Label, Pie, PieChart, Sector } from "recharts";
+import { Bar, BarChart, Label, Pie, PieChart, Sector } from 'recharts'
 
 import {
   ChartContainer,
   ChartConfig,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
-import { Code } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+} from '@/components/ui/chart'
+import { Code } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
 
 export interface LanguagesChartProps {
-  data: Record<string, number>;
+  data: Record<string, number>
 }
 
 export default function LanguagesChart({ data }: LanguagesChartProps) {
@@ -20,11 +20,11 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
     language: key,
     value: data[key],
     fill: `hsl(var(--chart-${(index % 5) + 1}))`,
-  }));
+  }))
 
-  const chartConfig = {} satisfies ChartConfig;
+  const chartConfig = {} satisfies ChartConfig
 
-  if (values.length < 1) return null;
+  if (values.length < 1) return null
 
   return (
     <div className="grid lg:grid-cols-2 items-center">
@@ -33,10 +33,7 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
         className="aspect-square min-h-[100px] sm:min-h-[250px] min-w-[100px] lg:min-w-[200px]"
       >
         <PieChart>
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent hideLabel />}
-          />
+          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
           <Pie
             data={values}
             dataKey="value"
@@ -60,5 +57,5 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
         ))}
       </div>
     </div>
-  );
+  )
 }
