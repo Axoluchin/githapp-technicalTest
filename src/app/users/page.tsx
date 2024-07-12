@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { getReposByUser, searchUser } from '@/api/users'
-import UserCard from '@/components/cards/UserCard'
-import { buttonVariants } from '@/components/ui/button'
 import paths from '@/paths/routes'
-import Search from '@/sections/users/Search'
-import { Alert, AlertTitle } from '@/components/ui/alert'
 import { AlertCircle } from 'lucide-react'
+import Search from '@/sections/users/Search'
+import UserCard from '@/sections/users/UserCard'
+import { buttonVariants } from '@/components/ui/button'
+import { getReposByUser, searchUser } from '@/api/users'
+import { Alert, AlertTitle } from '@/components/ui/alert'
 
 interface PageUsersProps {
   searchParams: {
