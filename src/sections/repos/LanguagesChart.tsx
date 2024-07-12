@@ -27,10 +27,10 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
   if (values.length < 1) return null;
 
   return (
-    <div className="grid grid-cols-2 items-center">
+    <div className="grid lg:grid-cols-2 items-center">
       <ChartContainer
         config={chartConfig}
-        className="mx-auto aspect-square m-h-[250px] min-w-[200px] w-full"
+        className="aspect-square min-h-[100px] sm:min-h-[250px] min-w-[100px] lg:min-w-[200px]"
       >
         <PieChart>
           <ChartTooltip

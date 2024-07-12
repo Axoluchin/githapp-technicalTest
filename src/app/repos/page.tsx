@@ -20,13 +20,13 @@ export default async function PageRepos({
     ? await searchRepos(search)
     : { data: null, status: null };
 
-  if (!data)
+  if (!data || data.items.length === 0)
     return (
-      <section className="flex flex-col justify-center items-center h-96 gap-4 m-auto">
+      <section className="flex flex-col justify-center items-center h-96 gap-4 m-auto px-4">
         <h1 className="text-5xl font-bold">GitHapp</h1>
         <Search />
         {status !== null && (
-          <Alert variant={"destructive"} className="w-96">
+          <Alert variant={"destructive"} className="sm:w-96">
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Repositorios no encontrados</AlertTitle>
           </Alert>
@@ -35,14 +35,16 @@ export default async function PageRepos({
     );
 
   return (
-    <div className="my-4 flex flex-col space-y-4 px-8">
-      <h1 className="text-5xl font-bold text-center">Resultados de {search}</h1>
+    <div className="my-4 flex flex-col space-y-4 px-8 overflow-hidden">
+      <h1 className="text-3xl md:text-5xl font-bold text-center">
+        Resultados de {search}
+      </h1>
       <div className="flex justify-center">
         <Link href={paths.repos} className={buttonVariants()}>
           Buscar otros repositorios
         </Link>
       </div>
-      <section className="grid grid-cols-3 gap-8">
+      <section className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-8">
         {data.items.map((repo) => (
           <RepoCard {...repo} key={repo.id} />
         ))}

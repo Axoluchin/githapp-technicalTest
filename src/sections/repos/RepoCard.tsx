@@ -43,7 +43,7 @@ export default async function RepoCard({
 
   return (
     <Card className="flex flex-col">
-      <CardHeader className="flex-row items-start space-x-4">
+      <CardHeader className="items-center sm:flex-row sm:items-start sm:space-x-4">
         <HoverCard>
           <HoverCardTrigger asChild>
             <Avatar
@@ -84,9 +84,11 @@ export default async function RepoCard({
         </HoverCard>
 
         <div className="flex flex-col space-y-1">
-          <CardTitle>{name}</CardTitle>
-          <div className="flex items-center justify-between">
-            <div className="flex flex-wrap gap-2">
+          <CardTitle className="text-center sm:text-start my-4 sm:m-0">
+            {name}
+          </CardTitle>
+          <div className="flex items-center justify-center sm:justify-between">
+            <div className="flex flex-wrap justify-center sm:justify-start gap-2">
               <CustomBadge value={stargazers_count} variant="outline">
                 <Star className="size-3 mr-2" />
               </CustomBadge>
@@ -110,7 +112,7 @@ export default async function RepoCard({
       <CardContent className="flex-1">
         <LanguagesChart data={languages} />
         {!!topics?.length && (
-          <div>
+          <div className="mt-4 md:m-0">
             <h4 className="font-semibold mb-1">Tags:</h4>
             <div className="flex flex-wrap gap-2">
               {topics.map((topic) => (
@@ -122,7 +124,7 @@ export default async function RepoCard({
           </div>
         )}
       </CardContent>
-      <CardFooter className="flex justify-end">
+      <CardFooter className="flex flex-wrap justify-end">
         {homepage && (
           <Link
             className={buttonVariants({ variant: "link" })}

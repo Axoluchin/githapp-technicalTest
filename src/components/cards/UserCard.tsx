@@ -62,7 +62,9 @@ export default function UserCard({
           </AvatarFallback>
         </Avatar>
         <div>
-          <CardTitle>{name || login}</CardTitle>
+          <CardTitle className="text-center sm:text-start">
+            {name || login}
+          </CardTitle>
           <CardDescription>
             #{login}{" "}
             {email && (
@@ -87,7 +89,7 @@ export default function UserCard({
           </div>
           <Separator orientation="vertical" decorative />
           <div className="flex flex-col items-center">
-            <Badge variant="outline">{followers}</Badge>
+            <Badge variant="outline">{following}</Badge>
             <span className="font-semibold">Siguiendo</span>
           </div>
         </div>
