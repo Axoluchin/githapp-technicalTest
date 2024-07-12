@@ -11,7 +11,7 @@ export default function Header() {
       </a>
       <nav className="flex-1 flex justify-center sm:space-x-8">
         <Link href={paths.user} className={buttonVariants({ variant: 'link' })}>
-          <span className="hidden sm:inline">Buscar</span> Usuarios
+          Usuarios
         </Link>
         <Link href={paths.repos} className={buttonVariants({ variant: 'link' })}>
           Repositorios

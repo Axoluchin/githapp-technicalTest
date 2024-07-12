@@ -18,7 +18,7 @@ export default async function PageRepos({ searchParams: { search } }: PageReposP
 
   if (!data || data.items.length === 0)
     return (
-      <section className="flex flex-col justify-center items-center h-96 gap-4 m-auto px-4">
+      <section className="flex flex-col justify-center items-center h-[70vh] gap-4 m-auto px-4">
         <h1 className="text-5xl font-bold">GitHapp</h1>
         <Search />
         {status !== null && (
@@ -31,7 +31,7 @@ export default async function PageRepos({ searchParams: { search } }: PageReposP
     )
 
   return (
-    <div className="my-4 flex flex-col space-y-4 px-8 overflow-hidden">
+    <div className="my-4 flex flex-col space-y-4 px-8 overflow-hidden max-w-screen-2xl m-auto">
       <h1 className="text-3xl md:text-5xl font-bold text-center">Resultados de {search}</h1>
       <div className="flex justify-center">
         <Link href={paths.repos} className={buttonVariants()}>

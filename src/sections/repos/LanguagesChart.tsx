@@ -27,7 +27,7 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
   if (values.length < 1) return null
 
   return (
-    <div className="grid lg:grid-cols-2 items-center">
+    <div className="xl:grid xl:grid-cols-2 items-center xl:space-x-8">
       <ChartContainer
         config={chartConfig}
         className="aspect-square min-h-[100px] sm:min-h-[250px] min-w-[100px] lg:min-w-[200px]"
@@ -44,7 +44,7 @@ export default function LanguagesChart({ data }: LanguagesChartProps) {
           ></Pie>
         </PieChart>
       </ChartContainer>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 p-2">
         {values.map((lan) => (
           <Badge
             style={{

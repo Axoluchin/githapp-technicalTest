@@ -38,7 +38,7 @@ export default async function RepoCard({
   const languages = await getLanguagesByRepo(languages_url)
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col overflow-hidden">
       <CardHeader className="items-center sm:flex-row sm:items-start sm:space-x-4">
         <HoverCard>
           <HoverCardTrigger asChild>
